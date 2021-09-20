@@ -1,0 +1,8 @@
+[Update Run ReactJs]
+npm install && npm run dev
+
+[Run live ReactJs]
+npm run watch
+
+[Install React Router]
+npm install react-router-dom --save
