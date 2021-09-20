@@ -34,7 +34,9 @@ final class Type
 	 */
 	public static function fromReflection($reflection): ?self
 	{
-		if ($reflection instanceof \ReflectionMethod) {
+		if ($reflection instanceof \ReflectionProperty && PHP_VERSION_ID < 70400) {
+			return null;
+		} elseif ($reflection instanceof \ReflectionMethod) {
 			$type = $reflection->getReturnType() ?? (PHP_VERSION_ID >= 80100 ? $reflection->getTentativeReturnType() : null);
 		} else {
 			$type = $reflection instanceof \ReflectionFunctionAbstract
